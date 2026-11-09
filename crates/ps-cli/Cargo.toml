@@ -1,0 +1,37 @@
+[package]
+name = "ps-cli"
+description = "Command-line interface for pr-sentinel"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+authors.workspace = true
+keywords = ["security", "cli"]
+categories = ["command-line-utilities"]
+
+[[bin]]
+name = "pr-sentinel"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = { workspace = true }
+chrono = { workspace = true }
+clap = { workspace = true }
+ps-core = { workspace = true }
+ps-engine = { workspace = true }
+ps-enrich = { workspace = true }
+ps-gen = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+ps-core = { workspace = true }
+ps-engine = { workspace = true }
+ps-enrich = { workspace = true }
+ps-gen = { workspace = true }
+serde_json = { workspace = true }
+tempfile = { workspace = true }
+
+[lints]
+workspace = true

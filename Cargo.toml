@@ -1,0 +1,50 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/ps-core",
+    "crates/ps-engine",
+    "crates/ps-enrich",
+    "crates/ps-gen",
+    "crates/ps-cli",
+    "xtask",
+]
+default-members = [
+    "crates/ps-core",
+    "crates/ps-engine",
+    "crates/ps-enrich",
+    "crates/ps-gen",
+    "crates/ps-cli",
+]
+
+[workspace.package]
+edition = "2024"
+license = "MIT OR Apache-2.0"
+rust-version = "1.85"
+repository = "https://github.com/Matt-mdlivingston/pr-sentinel"
+authors = ["pr-sentinel contributors"]
+version = "0.1.0"
+
+[workspace.dependencies]
+ps-core = { path = "crates/ps-core" }
+ps-engine = { path = "crates/ps-engine" }
+ps-enrich = { path = "crates/ps-enrich" }
+ps-gen = { path = "crates/ps-gen" }
+anyhow = "1"
+chrono = { version = "0.4", default-features = false, features = ["std", "clock", "serde"] }
+clap = { version = "4", features = ["derive"] }
+criterion = "0.8"
+ipnetwork = "0.21"
+maxminddb = "0.32"
+proptest = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tempfile = "3"
+thiserror = "2"
+toml = "1"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }

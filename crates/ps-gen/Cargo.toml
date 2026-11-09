@@ -1,0 +1,22 @@
+[package]
+name = "ps-gen"
+description = "Seeded synthetic login events with labeled attacks for pr-sentinel"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+authors.workspace = true
+keywords = ["synthetic-data", "security"]
+categories = ["authentication"]
+
+[dependencies]
+chrono = { workspace = true }
+ps-core = { workspace = true }
+ps-enrich = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+
+[lints]
+workspace = true

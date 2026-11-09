@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security report
+    url: https://github.com/Matt-mdlivingston/pr-sentinel/security/advisories/new
+    about: Report a vulnerability privately. Please do not file a public issue.
