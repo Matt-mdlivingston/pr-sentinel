@@ -1,0 +1,24 @@
+[package]
+name = "ps-core"
+description = "Domain types for pr-sentinel login risk scoring"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+authors.workspace = true
+keywords = ["security", "login", "risk"]
+categories = ["authentication"]
+
+[dependencies]
+chrono = { workspace = true }
+ipnetwork = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+serde_json = { workspace = true }
+
+[lints]
+workspace = true

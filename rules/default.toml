@@ -1,0 +1,51 @@
+# Default scoring rules for pr-sentinel.
+#
+# The displayed score is round(100 * sigmoid(prior_log_odds + sum(signal log-odds))).
+# prior_log_odds below is logit(0.05): a 5% base rate before any evidence.
+# Each signal contributes `weight * strength` in log-odds. Strength is 1 when a
+# binary signal fires. The IP fan-out signal scales strength with how far the
+# window is past its thresholds (see ps-engine docs).
+#
+# Per-tenant overrides replace individual fields, for example:
+#
+# [tenants.acme.scoring]
+# prior_log_odds = -2.2
+#
+# [tenants.acme.signals.impossible_travel]
+# max_plausible_speed_kmh = 750
+# weight = 5
+
+[scoring]
+prior_log_odds = -2.944438879
+
+[state]
+# Retained per user so batch replay and streaming stay bounded and agree.
+max_user_observations = 64
+# IP activity older than this, relative to the event being applied, is dropped.
+# Must be at least as long as every configured fan-out window.
+ip_retention_secs = 86400
+
+[signals.impossible_travel]
+enabled = true
+weight = 4.6
+max_plausible_speed_kmh = 900.0
+# Minimum plausible distance, after accuracy radii are subtracted.
+min_effective_distance_km = 100.0
+# DB-IP City Lite does not ship an accuracy radius. When enrichment leaves the
+# radius empty, each endpoint uses this many kilometers of tolerance.
+default_accuracy_radius_km = 50.0
+
+[signals.new_asn]
+enabled = true
+weight = 1.8
+min_prior_observations = 3
+
+[signals.ip_fanout]
+enabled = true
+weight = 3.6
+window_secs = 600
+min_distinct_accounts = 8
+min_failures = 20
+# One account retrying a password is not a fan-out.
+min_accounts_for_failure_burst = 4
+strength_cap = 2.0

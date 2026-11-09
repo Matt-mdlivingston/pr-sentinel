@@ -1,0 +1,10 @@
+/target
+**/*.rs.bk
+.DS_Store
+
+# Geo databases are downloaded by `cargo xtask download-geodb` and are not
+# redistributable as part of this repository. See README attribution.
+data/*.mmdb
+data/*.mmdb.gz
+data/*.json
+data/*.jsonl
